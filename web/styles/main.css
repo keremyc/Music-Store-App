@@ -116,3 +116,33 @@ footer p {
     text-align: right;
 }
 
+/* the styles for the side bars */
+aside h1 {
+    font-size: 125%;
+    padding-bottom: .5em;
+}
+aside h2 {
+    font-size: 100%;
+    color: green;
+    padding-bottom: .5em;
+}
+
+aside p {
+    margin-bottom: .5em;
+}
+aside img {
+    margin-bottom: 1em;
+}
+
+#sidebarB {
+    width: 180px;
+    float: right;
+    height: 400px;
+    padding-left: 20px;
+    border-left: 2px solid #ef9c00;
+}
+
+.no_underline {
+    text-decoration:none;
+}
+

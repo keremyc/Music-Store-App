@@ -23,4 +23,5 @@
         to order it. Most of the albums we carry aren't available anywhere else!</p>
 </section>
 
+<jsp:include page="/includes/column_right_news.jsp"/>
 <jsp:include page="/includes/footer.jsp"/>
