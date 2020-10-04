@@ -26,6 +26,13 @@ em { font-weight: bold; }
 h1 { font-size: 175%; }
 h2 { font-size: 125%; }
 
+/* the styles for links */
+a { font-weight: bold; }
+a:link { color: green; }
+a:visited { color: green; }
+a.current { color: #ef9c00; }
+a:hover, a:focus { color: blue; }
+
 /* the styles for header */
 header {
     display: block;
@@ -103,6 +110,10 @@ section h2 {
     margin-bottom: 0.35em;
 }
 
+.top_margin {
+    margin-top: 1em;
+}
+
 /* the styles for the footer */
 footer {
     clear: both;
@@ -142,6 +153,7 @@ aside img {
     border-left: 2px solid #ef9c00;
 }
 
+/* The styles for the classes */
 .no_underline {
     text-decoration:none;
 }
