@@ -153,8 +153,43 @@ aside img {
     border-left: 2px solid #ef9c00;
 }
 
+/* email List */
+section label {
+    float: left;
+    width: 8em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    padding-top: 0.25em;
+}
+
+section input[type="text"], input[type="email"], input[type="password"] {
+    width: 12em;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+section input[type="submit"] {
+    margin-left: 0.5em;
+}
+
+br {
+    clear: both;
+}
+
+#submit {
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    background-color: aquamarine;
+    padding: 0.5em;
+}
+
+
 /* The styles for the classes */
 .no_underline {
     text-decoration:none;
+}
+
+.no_pad_top {
+    padding-top: 0;
 }
 
