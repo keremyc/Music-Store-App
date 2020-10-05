@@ -67,8 +67,8 @@ public class UserDB {
                 "Country = ?, " +
                 "CreditCardType = ?, " +
                 "CreditCardNumber = ?, " +
-                "CreditCardExpirationType = ? " +
-                "WHERE Email = ?";
+                "CreditCardExpirationDate = ? " +
+                "WHERE EmailAddress = ?";
 
         try {
             stmt = conn.prepareStatement(query);

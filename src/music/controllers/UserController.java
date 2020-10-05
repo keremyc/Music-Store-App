@@ -2,7 +2,6 @@ package music.controllers;
 
 import music.business.User;
 import music.data.UserDB;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -70,7 +69,6 @@ public class UserController extends HttpServlet {
             request.setAttribute("message", message);
             url = "/email/thanks.jsp";
         }
-
         return url;
     }
 }

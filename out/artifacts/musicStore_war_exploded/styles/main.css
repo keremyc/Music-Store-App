@@ -183,7 +183,6 @@ br {
     padding: 0.5em;
 }
 
-
 /* The styles for the classes */
 .no_underline {
     text-decoration:none;
@@ -192,4 +191,11 @@ br {
 .no_pad_top {
     padding-top: 0;
 }
+
+.clear_both {
+    clear: both;
+}
+
+
+
 
