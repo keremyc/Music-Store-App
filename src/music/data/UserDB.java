@@ -12,7 +12,7 @@ public class UserDB {
         PreparedStatement stmt = null;
 
         String query = "INSERT INTO USER(FirstName, LastName, EmailAddress, CompanyName, Address1, Address2, " +
-                "City, State, Zip, Country, CreditCardType, CreditCardNumber, CreditCardExpirationDate " +
+                "City, State, Zip, Country, CreditCardType, CreditCardNumber, CreditCardExpirationDate) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try{
@@ -102,18 +102,18 @@ public class UserDB {
         ResultSet rs = null;
 
         String query = "SELECT * FROM USER " +
-                "WHERE Email = ?";
+                "WHERE EmailAddress = ?";
 
         try {
             stmt = conn.prepareStatement(query);
-            stmt.setString(1, "Email");
+            stmt.setString(1, email);
             rs = stmt.executeQuery();
             if (rs.next()){
                 User user = new User();
                 user.setId(rs.getLong("UserID"));
                 user.setFirstName(rs.getString("FirstName"));
                 user.setLastName(rs.getString("LastName"));
-                user.setEmail(rs.getString("Email"));
+                user.setEmail(rs.getString("EmailAddress"));
                 user.setCompanyName(rs.getString("CompanyName"));
                 user.setAddress1(rs.getString("Address1"));
                 user.setAddress2(rs.getString("Address2"));

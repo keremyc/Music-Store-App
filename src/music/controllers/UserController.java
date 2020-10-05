@@ -70,6 +70,7 @@ public class UserController extends HttpServlet {
             request.setAttribute("message", message);
             url = "/email/thanks.jsp";
         }
+
         return url;
     }
 }
