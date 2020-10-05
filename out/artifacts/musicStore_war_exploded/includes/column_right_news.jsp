@@ -15,7 +15,7 @@
     </a></h2>
     <p class="news_item">
         A refreshing mix of rock, country, and bluegrass
-        that will have yaou stomping your foot and crying in your beer
+        that will have you stomping your foot and crying in your beer
         in no time.
     </p>
 </aside>
