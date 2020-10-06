@@ -25,7 +25,7 @@
     <ul>
         <li><a href="<c:url value='#Admin'/>">Admin</a></li>
         <li><a href="<c:url value='/user/deleteCookies'/>">Delete Cookies</a></li>
-        <li><a href="<c:url value='#Show_Cart'/>">Show Cart</a></li>
+        <li><a href="<c:url value='/order/showCart'/>">Show Cart</a></li>
     </ul>
 </nav>
 </body>

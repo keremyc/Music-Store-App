@@ -183,6 +183,54 @@ br {
     padding: 0.5em;
 }
 
+
+table {
+    border: none;
+}
+th {
+    vertical-align: bottom;
+    text-align: left;
+}
+td {
+    vertical-align: top;
+}
+th, td {
+    padding: .3em;
+}
+
+.top {
+    vertical-align: top;
+}
+
+
+
+/* the style for the cart pages */
+.cart {
+    width: 700px;
+}
+
+.cart input[type="text"], input[type="email"], input[type="password"] {
+    float: left;
+    width: 12em;
+    margin-left: 0.5em;
+    margin-right: 0.2em;
+}
+
+.cart_row input[type="text"] {
+    width: 2em;
+    margin-left: 0em;
+}
+
+#quantity {
+    width: 2em;
+}
+
+#float_left {
+    float: left;
+    margin-right: 1em;
+}
+
+
 /* The styles for the classes */
 .no_underline {
     text-decoration:none;
@@ -195,6 +243,17 @@ br {
 .clear_both {
     clear: both;
 }
+
+.required {
+    color: red;
+    margin-bottom: 0;
+}
+
+#required {
+    margin-left: 8.5em;
+    margin-bottom: .5em;
+}
+
 
 
 
