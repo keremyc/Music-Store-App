@@ -9,6 +9,7 @@ import music.util.CookieUtil;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class OrderController extends HttpServlet {
 
@@ -46,12 +47,25 @@ public class OrderController extends HttpServlet {
         } else if (uri.endsWith("/displayCreditCard")){
             url = displayCreditCard(request);
         } else if (uri.endsWith("/displayUser")){
-            url = displayUser(request);
+            url = "/cart/user.jsp";
         }
 
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
+    }
+
+
+    private String displayCreditCard(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        int[] years = new int[10];
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        for (int i = year; i < year + 10; i++){
+            years[i - year] = i;
+        }
+        session.setAttribute("creditCardExpirationYears", years);
+        return "/cart/credit_card.jsp";
     }
 
     private String showCart(HttpServletRequest request){
@@ -198,10 +212,6 @@ public class OrderController extends HttpServlet {
         session.setAttribute("invoice", invoice);
 
         return "/cart/invoice.jsp";
-    }
-
-    private String displayCreditCard(HttpServletRequest request){
-        return "";
     }
 
     private String displayUser(HttpServletRequest request){

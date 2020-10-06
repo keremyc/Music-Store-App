@@ -209,6 +209,13 @@ th, td {
     width: 700px;
 }
 
+.cart label {
+    float: left;
+    width: 10em;
+    font-weight: bold;
+    padding-top: 0.25em;
+}
+
 .cart input[type="text"], input[type="email"], input[type="password"] {
     float: left;
     width: 12em;
@@ -219,6 +226,11 @@ th, td {
 .cart_row input[type="text"] {
     width: 2em;
     margin-left: 0em;
+}
+
+.cart select {
+    margin-left: 0.5em;
+    margin-right: 0.2em;
 }
 
 #quantity {
