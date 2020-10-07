@@ -1,9 +1,9 @@
 
-header, nav, section, aside {
+article, aside, figure, footer, header, nav, section {
     display: block;
 }
 
-h1, h2, ul, aside, section {
+section, aside, h1, h2, p, ul {
     padding: 0;
     margin: 0;
 }
@@ -265,6 +265,30 @@ th, td {
     margin-left: 8.5em;
     margin-bottom: .5em;
 }
+
+/* the styles of admin pages */
+#admin {
+    width: 700px;
+}
+
+#admin form {
+    margin-top: .5em;
+}
+
+#admin label {
+    width: 14em;
+    margin-left: .5em;
+    padding-top: 0.25em;
+}
+
+#admin .left_margin {
+    margin-left: 0em;
+}
+
+
+
+
+
 
 
 

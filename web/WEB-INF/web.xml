@@ -17,7 +17,11 @@
         <servlet-name>OrderController</servlet-name>
         <servlet-class>music.controllers.OrderController</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>music.controllers.AdminController</servlet-class>
+    </servlet>
+
     <!-- SERVLET MAPPINGS -->
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
@@ -30,6 +34,10 @@
     <servlet-mapping>
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/order/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/adminPage/*</url-pattern>
     </servlet-mapping>
 
     <!-- context initialization parameters -->

@@ -56,5 +56,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="com.sun.mail:jakarta.mail:1.6.4" level="project" />
+    <orderEntry type="library" name="org.apache.poi:poi:3.10-FINAL" level="project" />
   </component>
 </module>

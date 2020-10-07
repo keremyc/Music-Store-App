@@ -27,7 +27,8 @@ public class InvoiceDB {
             List<Invoice> listOfInvoices = new ArrayList<>();
             while (rs.next()){
                 // The user will be retrieved from the db after creating UserDB.
-                User user = new User();
+                String userEmail = rs.getString("emailAddress");
+                User user = UserDB.select(userEmail);
 
                 long invoiceID = rs.getLong("invoiceID");
                 List<LineItem> lineItems = LineItemDB.selectLineItems(invoiceID);
@@ -58,7 +59,7 @@ public class InvoiceDB {
         Connection conn = pool.getConnection();
         PreparedStatement stmt = null;
 
-        String query = "UPDATE Invoice" +
+        String query = "UPDATE Invoice " +
                 "SET IsProcessed = 'y' " +
                 "WHERE InvoiceID = ?";
 
