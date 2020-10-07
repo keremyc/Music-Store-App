@@ -42,7 +42,7 @@
     <listener>
         <listener-class>music.util.MusicStoreContextListener</listener-class>
     </listener>
-    
+
     
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
