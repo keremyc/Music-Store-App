@@ -79,7 +79,7 @@ public class InvoiceDB {
         Connection conn = pool.getConnection();
         PreparedStatement stmt = null;
 
-        String query = "INSERT INTO INVOICE(UserID, InvoiceDate, TotalAmount, IsProcessed" +
+        String query = "INSERT INTO INVOICE(UserID, InvoiceDate, TotalAmount, IsProcessed) " +
                 "VALUES (?, NOW(), ?, 'n')";
 
         try {

@@ -27,7 +27,7 @@
     <h2>FAX:</h2>
     <p>1-559-440-0963</p>
     <h2>Email:</h2>
-    <p><a href="mailto:custserv@freshcornrecords.com">custserv@freshcornrecords.com</a></p>
+    <p><a href="mailto:${custServEmail}">${custServEmail}</a></p>
 </section>
 
 <!-- end the middle column -->

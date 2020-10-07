@@ -31,7 +31,7 @@
             <tr>
                 <td><b>Expiration date (mm/yyyy)</b></td>
                 <td>
-                    <select name="selectCardExpirationMonth">
+                    <select name="creditCardExpirationMonth">
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>

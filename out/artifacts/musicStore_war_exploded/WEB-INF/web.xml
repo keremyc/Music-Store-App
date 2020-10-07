@@ -31,8 +31,17 @@
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/order/*</url-pattern>
     </servlet-mapping>
-    
-    
+
+    <!-- context initialization parameters -->
+    <context-param>
+        <param-name>custServEmail</param-name>
+        <param-value>custserv@freshcornrecords.com</param-value>
+    </context-param>
+
+    <!-- listener classes -->
+    <listener>
+        <listener-class>music.util.MusicStoreContextListener</listener-class>
+    </listener>
     
     
     <welcome-file-list>

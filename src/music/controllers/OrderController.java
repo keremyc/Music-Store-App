@@ -2,10 +2,13 @@ package music.controllers;
 
 import music.business.*;
 import music.data.DBUtil;
+import music.data.InvoiceDB;
 import music.data.ProductDB;
 import music.data.UserDB;
 import music.util.CookieUtil;
+import music.util.MailUtil;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -45,27 +48,16 @@ public class OrderController extends HttpServlet {
         } else if (uri.endsWith("/processUser")){
             url = processUser(request);
         } else if (uri.endsWith("/displayCreditCard")){
-            url = displayCreditCard(request);
+            url = "/cart/credit_card.jsp";
         } else if (uri.endsWith("/displayUser")){
             url = "/cart/user.jsp";
+        } else if (uri.endsWith("/completeOrder")){
+            url = completeOrder(request, response);
         }
 
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
-    }
-
-
-    private String displayCreditCard(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        int[] years = new int[10];
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        for (int i = year; i < year + 10; i++){
-            years[i - year] = i;
-        }
-        session.setAttribute("creditCardExpirationYears", years);
-        return "/cart/credit_card.jsp";
     }
 
     private String showCart(HttpServletRequest request){
@@ -190,8 +182,8 @@ public class OrderController extends HttpServlet {
         user.setCountry(country);
 
         if (UserDB.emailExists(email)){
-            user = UserDB.select(email);
             UserDB.update(user);
+            user = UserDB.select(email);
         } else {
             UserDB.insert(user);
         }
@@ -209,12 +201,65 @@ public class OrderController extends HttpServlet {
         Invoice invoice = new Invoice();
         invoice.setInvoiceDate(today);
         invoice.setLineItems(cart.getItems());
+        invoice.setUser(user);
         session.setAttribute("invoice", invoice);
 
         return "/cart/invoice.jsp";
     }
 
-    private String displayUser(HttpServletRequest request){
-        return "";
+    private String completeOrder(HttpServletRequest request, HttpServletResponse response){
+
+        HttpSession session = request.getSession();
+        Invoice invoice = (Invoice)session.getAttribute("invoice");
+
+        String creditCardType = request.getParameter("creditCardType");
+        String creditCardNumber = request.getParameter("creditCardNumber");
+        String creditCardMonth = request.getParameter("creditCardExpirationMonth");
+        String creditCardYear = request.getParameter("creditCardExpirationYear");
+
+        User user = invoice.getUser();
+        user.setCreditCardType(creditCardType);
+        user.setCreditCardNumber(creditCardNumber);
+        user.setCreditCardExpirationDate(creditCardMonth + "/" + creditCardYear);
+
+        if (UserDB.emailExists(user.getEmail())){
+            UserDB.update(user);
+        } else {
+            UserDB.insert(user);
+        }
+        invoice.setUser(user);
+
+        // write the new invoice to the db.
+        InvoiceDB.insert(invoice);
+
+        // set emailCookie in user's browser
+        Cookie emailCookie = new Cookie("email", user.getEmail());
+        emailCookie.setPath("/");
+        emailCookie.setMaxAge(60 * 60 * 24 * 365 * 2);
+        response.addCookie(emailCookie);
+
+        // remove all items in the user's cart
+        session.removeAttribute("cart");
+        session.setAttribute("emptyCart", "Your cart is empty");
+
+        //send an email to the user to confirm the order
+        String to = user.getEmail();
+        String from = "confirmation@freshcornrecords.com";
+        String subject = "Order Confirmation";
+        String body = "Dear " + user.getFirstName() + ",\n\n" +
+                "Thanks for ordering from us. " +
+                "You should receive your order in 3-5 business days. " +
+                "Please contact us if you have any questions.\n" +
+                "Have a great day and thanks again!\n\n" +
+                "Joe King\n" +
+                "Fresh Corn Records";
+        boolean isBodyHTML = false;
+
+        MailUtil.sendEmail(from, to, subject, body, isBodyHTML);
+
+        return "/cart/complete.jsp";
+
     }
+
+
 }
