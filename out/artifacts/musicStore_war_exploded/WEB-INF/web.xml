@@ -51,7 +51,54 @@
         <listener-class>music.util.MusicStoreContextListener</listener-class>
     </listener>
 
-    
+    <!-- Error page -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error_404.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error_java.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.sql.SQLException</exception-type>
+        <location>/error_sql.jsp</location>
+    </error-page>
+
+    <!-- Define two security roles -->
+    <security-role>
+        <description>customer service employees</description>
+        <role-name>service</role-name>
+    </security-role>
+    <security-role>
+        <description>programmers</description>
+        <role-name>programmer</role-name>
+    </security-role>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>programmer</role-name>
+            <role-name>service</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/login_error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

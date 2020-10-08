@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<Context>
+<Context path="/musicStore">
 
     <!-- the music database that contains the Music Store data -->
     <Resource name="jdbc/musicDB" auth="Container"
@@ -11,5 +11,21 @@
               logAbandoned="true" removeAbandoned="true"
               removeAbandonedTimeout="60"
               maxActive="100" maxIdle="30" maxWait="10000" />
+
+    <!-- the database that contains admin usernames and passwords -->
+    <Resource name="jdbc/musicAuth" auth="Container"
+              type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/MUSIC_STORE_AUTHORIZATION?autoReconnect=true"
+              username="root" password="kerem1928"
+              logAbandoned="true" removeAbandoned="true"
+              removeAbandonedTimeout="60"
+              maxActive="100" maxIdle="30" maxWait="10000" />
+
+    <Realm dataSourceName="jdbc/musicAuth" localDataSource="true"
+           className="org.apache.catalina.realm.DataSourceRealm"
+           userTable="USER_PASS" userRoleTable="USER_ROLE"
+           userNameCol="UserName" roleNameCol="UserRole" userCredCol="Password"
+           debug="99" />
+
 
 </Context>
